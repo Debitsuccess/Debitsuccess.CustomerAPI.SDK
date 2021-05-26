@@ -1,0 +1,13 @@
+{
+  "ApiConnectionSettings": {
+    "ClientId": "",
+    "ClientSecret": "",
+    "IdentityUrl": "https://oc-test.debitsuccess.com/identity/",
+    "CustomerApiUrl": "https://oc-test.debitsuccess.com/customerservices/v1.0/",
+    "ClientScope": ""
+  },
+  "ApiSettings": {
+    "BusinessId": 0,
+    "BusinessAccountId": ""
+  }
+}
