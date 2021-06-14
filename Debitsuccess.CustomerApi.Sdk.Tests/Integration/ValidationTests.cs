@@ -1,4 +1,5 @@
 ﻿using Debitsuccess.CustomerApi.Sdk.Client;
+using Debitsuccess.CustomerApi.Sdk.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;

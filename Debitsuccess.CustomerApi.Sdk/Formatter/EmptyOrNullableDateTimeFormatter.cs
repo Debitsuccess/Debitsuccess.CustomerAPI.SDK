@@ -32,13 +32,17 @@ namespace Debitsuccess.CustomerApi.Sdk.Formatter
         {
             if (reader.ReadIsNull()) return null;
             var str = reader.ReadString();
-            if (_formatString == null)
+            if(string.IsNullOrWhiteSpace(str))
+            {
+                return null;
+            }
+            else if (string.IsNullOrEmpty(_formatString))
             {
                 return DateTime.Parse(str, CultureInfo.InvariantCulture);
             }
             else
             {
-                return (!string.IsNullOrWhiteSpace(str)) ?  DateTime.ParseExact(str, _formatString, CultureInfo.InvariantCulture) : null as DateTime?;
+                return DateTime.ParseExact(str, _formatString, CultureInfo.InvariantCulture);
             }
         }
     }
