@@ -205,5 +205,20 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Util
                 ExternalScheduleId = $"SDKTST{customerId}"
             };
         }
+
+        internal static Response.RecurringSchedule GetCreateRecurringScheduleValidRequest(int customerId)
+        {
+            return new Response.RecurringSchedule()
+            {
+                MinimumEffectiveDate = DateTime.Today.AddDays(7*10),
+                Installment = 20.0M,
+                Frequency = FrequencyType.Weekly.Value,
+                PreviousScheduleEndDate = DateTime.Today.AddDays((7 * 10) - 1),
+                ExternalScheduleId = $"SDKTest_new_secondary_{customerId}",
+                ScheduleDescription = "SDK Test new secondary",
+                DeleteFutureSchedules = true,
+                OverrideBillingCycleAlignment = true
+            };
+        }
     }
 }

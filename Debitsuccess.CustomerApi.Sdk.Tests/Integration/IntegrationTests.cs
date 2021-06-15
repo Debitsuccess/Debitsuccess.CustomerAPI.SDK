@@ -15,6 +15,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
         private static ApiSettings _apiSettings;
         private static CustomerApiClient _dsCustomerApiClient;
         private static int _customerId;
+        private static int _recurringScheduleId;
         private static int _oldEmailAddressId;
         private static int _oldPhoneNumberId;
         private static int _oldAddressId;
@@ -274,7 +275,8 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             // Assert
             Assert.IsNotNull(result);
         }
-
+        #endregion
+        #region Account
         [TestMethod]
         public async Task Test4001_CreateAccountShouldBeSuccessful()
         {
@@ -328,7 +330,9 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             Assert.IsFalse(result.AccountExternalId.Equals(_accountExternalId, StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(result.AccountExternalId.Equals(newAccouuntExternalId, StringComparison.OrdinalIgnoreCase));
         }
+        #endregion
 
+        #region Payment Methods
         [TestMethod]
         public async Task Test5001_GetAllPaymentMethodsShouldBeSuccessful()
         {
@@ -349,6 +353,51 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             queryParameters[0] = accountIdParameter;
             // Act
             var result = await _dsCustomerApiClient.PaymentMethods.GetAll(_customerId, queryParameters);
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        #endregion
+
+        #region Recurring Schedules
+        [TestMethod]
+        public async Task Test6001_GetAllRecurringScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.RecurringSchedules.GetAll(_accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Elements.Count == 2);
+            _recurringScheduleId = result.Elements[1].ScheduleId;
+        }
+
+        [TestMethod]
+        public async Task Test6002_GetARecurringScheduleByIdShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.RecurringSchedules.Get(_recurringScheduleId.ToString(), _accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.ScheduleId == _recurringScheduleId);
+        }
+
+        [TestMethod]
+        public async Task Test6004_DeleteScheduleByIdShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.RecurringSchedules.Delete(_recurringScheduleId.ToString(), _accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+        }
+        [TestMethod]
+        public async Task Test6005_CreateRecurringScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            var request = TestDataHelper.GetCreateRecurringScheduleValidRequest(_customerId);
+            // Act
+            var result = await _dsCustomerApiClient.RecurringSchedules.Create(request, _accountId);
             // Assert
             Assert.IsNotNull(result);
         }
