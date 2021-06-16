@@ -450,5 +450,52 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             Assert.IsNotNull(result);
         }
         #endregion
+
+        #region Suspension Schedules
+        [TestMethod]
+        public async Task Test8001_CreateSuspensionScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            var request = TestDataHelper.GetCreateSuspensionScheduleValidRequest(_customerId);
+            // Act
+            var result = await _dsCustomerApiClient.SuspensionSchedules.Create(request, _accountId);
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.AccountId, StringComparison.OrdinalIgnoreCase));
+            _oneOffScheduleId = result.ScheduleId;
+        }
+
+        [TestMethod]
+        public async Task Test8002_GetSuspensionScheduleByIdShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.SuspensionSchedules.Get(_oneOffScheduleId.ToString(), _accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.AccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public async Task Test8003_GetAllSuspensionScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.SuspensionSchedules.GetAll(_accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.Elements[0].AccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public async Task Test8004_DeleteSuspensionScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.SuspensionSchedules.Delete(_oneOffScheduleId.ToString(), _accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+        }
+        #endregion
     }
 }

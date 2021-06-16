@@ -220,5 +220,18 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Util
                 OverrideBillingCycleAlignment = true
             };
         }
+
+        internal static Response.SuspensionSchedule GetCreateSuspensionScheduleValidRequest(int customerId)
+        {
+            return new Response.SuspensionSchedule()
+            {
+                MinimumEffectiveDate = DateTime.Today.AddDays(7 * 5),
+                SuspensionFee = 20.0M,
+                Frequency = FrequencyType.Weekly.Value,
+                ExternalScheduleId = $"SDKTest_new_suspension_{customerId}",
+                ScheduleDescription = "SDK Test new suspension",
+                SuspensionScheduleEndDate = DateTime.Today.AddDays(7 * 7)
+            };
+        }
     }
 }
