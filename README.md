@@ -65,24 +65,24 @@
 #### ✅ Payment methods
      ✅ Get Payment methods
 
-#### 🔰 Suspension Schedule
-     🔰 Get Suspension Schedule by Id
-     🔰 Get Suspension Schedules
-     🔰 Create Suspension Schedules
-     🔰 Update Suspension Schedules
-     🔰 Delete Suspension Schedules
+#### ✅ Suspension Schedule
+     ✅ Get Suspension Schedule by Id
+     ✅ Get Suspension Schedules
+     ✅ Create Suspension Schedules
+     ✅ Update Suspension Schedules
+     ✅ Delete Suspension Schedules
 
-#### 🔰 Recurring Schedule
-     🔰 Get Recurring Schedule by Id
-     🔰 Get Recurring Schedules
-     🔰 Create Recurring Schedules
-     🔰 Delete Suspension Schedules
+#### ✅ Recurring Schedule
+     ✅ Get Recurring Schedule by Id
+     ✅ Get Recurring Schedules
+     ✅ Create Recurring Schedules
+     ✅ Delete Suspension Schedules
 
-#### 🔰 One-off Schedule
-     🔰 Get One-off Schedule by Id
-     🔰 Get One-off Schedules
-     🔰 Create One-off Schedules
-     🔰 Delete One-off Schedules
+#### ✅ One-off Schedule
+     ✅ Get One-off Schedule by Id
+     ✅ Get One-off Schedules
+     ✅ Create One-off Schedules
+     ✅ Delete One-off Schedules
 
 #### 🛠 Terms and Conditions
      🛠 Get Terms and Conditions
