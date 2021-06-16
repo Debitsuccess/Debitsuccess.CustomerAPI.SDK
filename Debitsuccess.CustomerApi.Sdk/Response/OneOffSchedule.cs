@@ -6,7 +6,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Response
 {
     public class OneOffSchedule : BaseResponse
     {
-        public string ScheduleId { get; set; }
+        public int ScheduleId { get; set; }
         public string AccountId { get; set; }
         [JsonFormatter(typeof(DateTimeFormatter), "yyyy-MM-dd")]
         public DateTime DueDate { get; set; }

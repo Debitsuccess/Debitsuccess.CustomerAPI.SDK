@@ -16,6 +16,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
         private static CustomerApiClient _dsCustomerApiClient;
         private static int _customerId;
         private static int _recurringScheduleId;
+        private static int _oneOffScheduleId;
         private static int _oldEmailAddressId;
         private static int _oldPhoneNumberId;
         private static int _oldAddressId;
@@ -383,7 +384,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
         }
 
         [TestMethod]
-        public async Task Test6004_DeleteScheduleByIdShouldBeSuccessful()
+        public async Task Test6003_DeleteScheduleByIdShouldBeSuccessful()
         {
             // Arrange
             // Act
@@ -392,13 +393,60 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             Assert.IsNotNull(result);
         }
         [TestMethod]
-        public async Task Test6005_CreateRecurringScheduleShouldBeSuccessful()
+        public async Task Test6004_CreateRecurringScheduleShouldBeSuccessful()
         {
             // Arrange
             var request = TestDataHelper.GetCreateRecurringScheduleValidRequest(_customerId);
             // Act
             var result = await _dsCustomerApiClient.RecurringSchedules.Create(request, _accountId);
             // Assert
+            Assert.IsNotNull(result);
+        }
+        #endregion
+
+        #region One-off Schedules
+        [TestMethod]
+        public async Task Test7001_CreateOneOffScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            var request = TestDataHelper.GetCreateOneOffScheduleValidRequest(_customerId);
+            // Act
+            var result = await _dsCustomerApiClient.OneOffSchedules.Create(request, _accountId);
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.AccountId, StringComparison.OrdinalIgnoreCase));
+            _oneOffScheduleId = result.ScheduleId;
+        }
+
+        [TestMethod]
+        public async Task Test7002_GetOneOffScheduleByIdShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.OneOffSchedules.Get(_oneOffScheduleId.ToString(), _accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.AccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public async Task Test7003_GetAllOneOffScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.OneOffSchedules.GetAll(_accountId);
+            // Assert          
+            Assert.IsNotNull(result);
+            Assert.IsTrue(_accountId.Equals(result.Elements[0].AccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public async Task Test7004_DeleteScheduleShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var result = await _dsCustomerApiClient.OneOffSchedules.Delete(_oneOffScheduleId.ToString(), _accountId);
+            // Assert          
             Assert.IsNotNull(result);
         }
         #endregion

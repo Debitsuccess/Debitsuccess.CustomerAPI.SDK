@@ -200,7 +200,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Util
             return new Response.OneOffSchedule()
             {
                 DueDate = DateTime.Now.AddDays(1),
-                Amount = 10.0M,
+                Amount = 10.10M,
                 ScheduleDescription = "SDK Test installment",
                 ExternalScheduleId = $"SDKTST{customerId}"
             };
