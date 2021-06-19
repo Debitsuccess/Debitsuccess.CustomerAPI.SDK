@@ -173,12 +173,30 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
         #endregion
 
         #region GET Methods
+
+        /// <summary>
+        /// Execute a generic GET request to API to get a default resource
+        /// from the parent resouce
+        /// </summary>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <typeparam name="TParent"></typeparam>
+        /// <param name="parentId"></param>
+        /// <returns>The requested resource of type inherited from <see cref="BaseResponse"/></returns>
+        public async Task<TResponse> GetDefault<TResponse, TParent>(string parentId)
+            where TResponse : BaseResponse
+            where TParent : BaseResponse
+        {
+            var request = new RestRequest(
+                                $"{ApiHelpers.GetResourceName<TParent>()}/{parentId}/{ApiHelpers.GetResourceName<TResponse>()}"
+                                , Method.GET);
+            return await CallApi<TResponse>(request);
+        }
         /// <summary>
         /// Execute a generic GET request to API.
         /// </summary>
         /// <typeparam name="TResponse">Any response inherited from <see cref="BaseResponse"/></typeparam>
         /// <param name="resourceId">A unique identifier of the resource</param>
-        /// <returns>Resource with a specified Id</returns>
+        /// <returns>Resource with a specified Id of type inherited from <see cref="BaseResponse"/></returns>
         public async Task<TResponse> Get<TResponse>(string resourceId)
             where TResponse : BaseResponse
         {
@@ -199,7 +217,6 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
             where TResponse : BaseResponse
             where TParent : BaseResponse
         {
-            //await UpdateBearer();
             var request = new RestRequest(
                                 $"{ApiHelpers.GetResourceName<TParent>()}/{parentId}/{ApiHelpers.GetResourceName<TResponse>()}/{resourceId}"
                                 , Method.GET);
@@ -221,6 +238,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
             request.RequestFormat = DataFormat.Json;
             return await CallGetAllApi<TResponse, TResponses>(request);
         }
+
         public async Task<TResponses> GetAll<TResponse, TResponses, TParent>(string parentId, params QueryParameterType[] queryParameters)
             where TResponses: IGetAll<TResponse>
             where TResponse : BaseResponse

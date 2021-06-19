@@ -27,6 +27,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests
         [DataRow(typeof(PaymentMethod), "paymentMethods")]
         [DataRow(typeof(PhoneNumber), "phonenumbers")]
         [DataRow(typeof(RecurringSchedule), "recurringSchedules")]
+        [DataRow(typeof(TermsAndConditions), "termsAndConditions")]
         [DataRow(typeof(UpdateAccount), "accounts")]        
         public void GetResourceNameShouldReturnRightName(Type type, string expectedResourceName)
         {

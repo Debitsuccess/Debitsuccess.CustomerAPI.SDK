@@ -69,7 +69,18 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             var response = await _dsCustomerApiClient.BusinessAccounts.Get(_businessAccountId);
             // Assert
             Assert.IsNotNull(response);
-            Assert.IsTrue(response.BusinessAccountId.Equals(_businessAccountId, StringComparison.CurrentCultureIgnoreCase));
+            Assert.IsTrue(response.BusinessAccountId.Equals(_businessAccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public async Task Test2001_GetTermsAndConditionsByIdShouldBeSuccessful()
+        {
+            // Arrange
+            // Act
+            var response = await _dsCustomerApiClient.TermsAndConditions.Get(_businessAccountId);
+            // Assert
+            Assert.IsNotNull(response);
+            Assert.IsTrue(response.BusinessAccountId.Equals(_businessAccountId, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

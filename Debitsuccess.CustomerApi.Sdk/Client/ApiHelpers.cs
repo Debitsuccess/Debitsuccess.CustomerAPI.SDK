@@ -38,6 +38,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
                 nameof(RecurringSchedule) => "recurringSchedules",
                 nameof(SuspensionSchedule) => "suspensionSchedules",
                 nameof(SuspensionSchedules) => "suspensionSchedules",
+                nameof(TermsAndConditions) => "termsAndConditions",
                 nameof(UpdateAccount) => "accounts",
                 _ => throw new Exception($"No resource found for type {nameof(R)}"),
             };
