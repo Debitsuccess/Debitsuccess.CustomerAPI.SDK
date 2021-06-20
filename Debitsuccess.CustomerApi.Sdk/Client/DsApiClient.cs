@@ -38,6 +38,27 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
         #region Generic Methods
 
         /// <summary>
+        /// Execute a generic POST request to API to create a sub-resource. This method should be used
+        /// to create child entities when request and response have different structures
+        /// </summary>
+        /// <typeparam name="TRequest">Any request inherited from <see cref="BaseRequest"/></typeparam>
+        /// <typeparam name="TResponse">Any response inherited from <see cref="BaseResponse"/></typeparam>
+        /// <typeparam name="TParent">Type of the parent entity inherited from <see cref="BaseResponse"/></typeparam>
+        /// <param name="request">Any request inherited from <see cref="BaseRequest"/></param>
+        /// <param name="parentId">An unique identifier of the parent resource</param>
+        /// <returns></returns>
+        public async Task<TResponse> Post<TRequest, TResponse, TParent>(TRequest request, string parentId)
+            where TRequest : BaseRequest
+            where TResponse : BaseResponse
+            where TParent : BaseResponse
+        {
+            var apiRequest = new RestRequest(
+                                $"{ApiHelpers.GetResourceName<TParent>()}/{parentId}/{ApiHelpers.GetResourceName<TResponse>()}/"
+                                , Method.POST).AddJsonBody(request);
+            return await CallApi<TResponse>(apiRequest);
+        }
+
+        /// <summary>
         /// Execute a generic POST request to API to create a resource. This method is not suitable for
         /// creating composite entities (<see cref="Request.CreateCustomer"/>Customer</see>/Account)
         /// </summary>
@@ -62,7 +83,6 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
             where TResponse : BaseResponse
             where TParent : BaseResponse
         {
-            //await UpdateBearer();
             var request = new RestRequest(
                                 $"{ApiHelpers.GetResourceName<TParent>()}/{parentId}/{ApiHelpers.GetResourceName<TResponse>()}/"
                                 , Method.POST).AddJsonBody(resource);

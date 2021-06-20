@@ -53,6 +53,13 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
         public GenericChildResourceGetAllClient<PaymentStatus, PaymentStatuses, Business> PaymentStatuses { get => _paymentStatusClientInstance ??= new GenericChildResourceGetAllClient<PaymentStatus, PaymentStatuses, Business>(_dsApiClient); }
         private GenericGetDefaultClient<TermsAndConditions, BusinessAccount> _termsAndConditionsClientInstance;
         public GenericGetDefaultClient<TermsAndConditions, BusinessAccount> TermsAndConditions { get => _termsAndConditionsClientInstance ??= new GenericGetDefaultClient<TermsAndConditions, BusinessAccount>(_dsApiClient); }
+
+        private GenericCreateChildClient<Request.CasualPaymentToken, PaymentToken, BusinessAccount> _casualPaymentTokenClientInstance;
+        public GenericCreateChildClient<Request.CasualPaymentToken, PaymentToken, BusinessAccount> CasualPaymentToken { get => _casualPaymentTokenClientInstance ??= new GenericCreateChildClient<Request.CasualPaymentToken, PaymentToken, BusinessAccount>(_dsApiClient); }
+
+        private GenericCreateChildClient<Request.AccountPaymentToken, PaymentToken, Account> _accountPaymentTokenClientInstance;
+        public GenericCreateChildClient<Request.AccountPaymentToken, PaymentToken, Account> AccountPaymentToken { get => _accountPaymentTokenClientInstance ??= new GenericCreateChildClient<Request.AccountPaymentToken, PaymentToken, Account>(_dsApiClient); }
+
         public CustomerApiClient(ApiConnectionSettings apiConnectionSettings)
         {
             this._apiConnectionSettings = apiConnectionSettings;

@@ -34,6 +34,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
                 nameof(PaymentMethod) => "paymentMethods",
                 nameof(PaymentStatus) => "paymentStatuses",
                 nameof(PaymentStatuses) => "paymentStatuses",
+                nameof(PaymentToken) => "paymentTokens",
                 nameof(PhoneNumber) => "phonenumbers",
                 nameof(RecurringSchedule) => "recurringSchedules",
                 nameof(SuspensionSchedule) => "suspensionSchedules",

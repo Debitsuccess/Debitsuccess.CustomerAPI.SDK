@@ -233,5 +233,27 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Util
                 SuspensionScheduleEndDate = DateTime.Today.AddDays(7 * 7)
             };
         }
+
+        internal static Request.CasualPaymentToken GetCreateCasualPaymentTokenValidRequest(string businessAccountId)
+        {
+            return new Request.CasualPaymentToken()
+            {
+                Amount = 11.11M,
+                CallbackURL = "https://www.google.com/?q=",
+                PaymentNote = "SDK integration test",
+                PaymentRef = $"{businessAccountId}-{DateTime.Now.Ticks}"
+            };
+        }
+
+        internal static Request.AccountPaymentToken GetCreateAccountPaymentTokenValidRequest(string businessAccountId)
+        {
+            return new Request.AccountPaymentToken()
+            {
+                Amount = 11.11M,
+                CallbackURL = "https://www.google.com/?q=",
+                PaymentNote = "SDK integration test",
+                CreateOneOffCharge = true
+            };
+        }
     }
 }

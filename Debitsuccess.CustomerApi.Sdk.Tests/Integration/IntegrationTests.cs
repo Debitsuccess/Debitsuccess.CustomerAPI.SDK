@@ -497,5 +497,17 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             Assert.IsNotNull(result);
         }
         #endregion
+
+        [TestMethod]
+        public async Task Test9001_CreateAccountPaymentTokenShouldBeSuccessful()
+        {
+            // Arrange
+            _accountId = "DEA2887611";
+            var request = TestDataHelper.GetCreateAccountPaymentTokenValidRequest(_accountId);
+            // Act
+            var response = await _dsCustomerApiClient.AccountPaymentToken.Create(request, _accountId);
+            // Assert
+            Assert.IsNotNull(response);
+        }
     }
 }

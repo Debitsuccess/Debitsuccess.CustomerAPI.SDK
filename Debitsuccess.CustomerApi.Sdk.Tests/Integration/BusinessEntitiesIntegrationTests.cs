@@ -1,6 +1,7 @@
 ﻿using Debitsuccess.CustomerApi.Sdk.Client;
 using Debitsuccess.CustomerApi.Sdk.Enums;
 using Debitsuccess.CustomerApi.Sdk.Response;
+using Debitsuccess.CustomerApi.Sdk.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
@@ -81,6 +82,20 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             // Assert
             Assert.IsNotNull(response);
             Assert.IsTrue(response.BusinessAccountId.Equals(_businessAccountId, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Ignore this test for now, cause the endpoint retruns 404
+        [Ignore]
+        [TestMethod]
+        public async Task Test3001_CreateCasualPaymentTokenShouldBeSuccessful()
+        {
+            // Arrange
+            _businessAccountId = "DEM";
+            var request = TestDataHelper.GetCreateCasualPaymentTokenValidRequest(_businessAccountId);
+            // Act
+            var response = await _dsCustomerApiClient.CasualPaymentToken.Create(request, _businessAccountId);
+            // Assert
+            Assert.IsNotNull(response);
         }
     }
 }
