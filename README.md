@@ -23,7 +23,11 @@
      ✅ Update Account     
      ✅ Patch Account     
      ✅ Close Account
-     
+     🛠 Transfer Account
+
+#### 🛠 Guarantor
+     🛠 Create Guaranor
+
 #### ✅ Business Accounts
      ✅ Get Business Account by id     
      ✅ Get Business Accounts
@@ -84,11 +88,11 @@
      ✅ Create One-off Schedules
      ✅ Delete One-off Schedules
 
-#### 🛠 Terms and Conditions
-     🛠 Get Terms and Conditions
+#### ✅ Terms and Conditions
+     ✅ Get Terms and Conditions
 
-#### 🛠 Payment Tokens
-     🛠 Account Payment Tokens
-     🛠 Casual Payment Tokens
+#### ✅ Payment Tokens
+     ✅ Account Payment Tokens
+     ✅ Casual Payment Tokens
      
 You can find documentation for Debitsuccess Customer API here: https://debitsuccess.stoplight.io/
