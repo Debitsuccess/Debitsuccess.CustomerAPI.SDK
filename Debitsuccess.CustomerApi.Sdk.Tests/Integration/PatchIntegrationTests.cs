@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
 {
+    /// <summary>
+    /// This class is for internal purposes, cause one time payment token
+    /// cannot be generated via API call. To get a token we need to use a capture widget
+    /// https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Payment-Capture-Widget.md
+    /// </summary>
     [TestClass]
     public class PatchIntegrationTests
     {

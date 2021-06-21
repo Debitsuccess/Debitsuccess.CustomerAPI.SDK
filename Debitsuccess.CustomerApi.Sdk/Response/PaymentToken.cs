@@ -12,4 +12,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Response
         public DateTime ValidTo { get; set; }
         public string PaymentFormURL { get; set; }
     }
+    
+    // Casual Payment Token has the same structure as Payment Token but the endpoint is different
+    public class CasualPaymentToken : PaymentToken { }
 }

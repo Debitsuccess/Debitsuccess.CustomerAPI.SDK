@@ -10,7 +10,6 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
         /// </summary>
         public static string GetResourceName<R>() where R: BaseResponse
         {
-            var test = typeof(R).Name;
             return typeof(R).Name switch
             {
                 nameof(Account) => "accounts",
@@ -20,6 +19,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
                 nameof(BusinessAccount) => "businessaccounts",
                 nameof(Request.CreateCustomer) => "customers",
                 nameof(Request.CreateAccount) => "accounts",
+                nameof(CasualPaymentToken) => "casualPaymentTokens",
                 nameof(Customer) => "customers",
                 nameof(Customers) => "customers",
                 nameof(EmailAddress) => "emailaddresses",
@@ -41,7 +41,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Client
                 nameof(SuspensionSchedules) => "suspensionSchedules",
                 nameof(TermsAndConditions) => "termsAndConditions",
                 nameof(UpdateAccount) => "accounts",
-                _ => throw new Exception($"No resource found for type {nameof(R)}"),
+                _ => throw new Exception($"No resource found for type {typeof(R).Name}"),
             };
         }
     }

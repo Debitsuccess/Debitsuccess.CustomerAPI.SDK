@@ -14,6 +14,7 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests
         [DataRow(typeof(Address), "addresses")]
         [DataRow(typeof(Business), "businesses")]
         [DataRow(typeof(BusinessAccount), "businessaccounts")]
+        [DataRow(typeof(CasualPaymentToken), "casualPaymentTokens")]
         [DataRow(typeof(CreateCustomer), "customers")]
         [DataRow(typeof(CreateAccount), "accounts")]
         [DataRow(typeof(Customer), "customers")]

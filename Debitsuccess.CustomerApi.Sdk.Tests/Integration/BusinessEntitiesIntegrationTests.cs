@@ -84,13 +84,10 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
             Assert.IsTrue(response.BusinessAccountId.Equals(_businessAccountId, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Ignore this test for now, cause the endpoint retruns 404
-        [Ignore]
         [TestMethod]
         public async Task Test3001_CreateCasualPaymentTokenShouldBeSuccessful()
         {
             // Arrange
-            _businessAccountId = "DEM";
             var request = TestDataHelper.GetCreateCasualPaymentTokenValidRequest(_businessAccountId);
             // Act
             var response = await _dsCustomerApiClient.CasualPaymentToken.Create(request, _businessAccountId);

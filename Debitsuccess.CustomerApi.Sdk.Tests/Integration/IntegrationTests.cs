@@ -502,7 +502,6 @@ namespace Debitsuccess.CustomerApi.Sdk.Tests.Integration
         public async Task Test9001_CreateAccountPaymentTokenShouldBeSuccessful()
         {
             // Arrange
-            _accountId = "DEA2887611";
             var request = TestDataHelper.GetCreateAccountPaymentTokenValidRequest(_accountId);
             // Act
             var response = await _dsCustomerApiClient.AccountPaymentToken.Create(request, _accountId);
