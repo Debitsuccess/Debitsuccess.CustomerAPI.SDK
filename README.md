@@ -1,5 +1,11 @@
 # Debitsuccess.CustomerAPI.SDK
 .Net standard library to work with Debitsuccess CustomerAPI
+
+## TODO:
+Add docs how to use the SDK
+Add a packcage to NuGet
+Add missing endpoints (cross-check with stoplight docs
+
 ### Legend:
 
 ✅ Implemented and covered with integration tests
